@@ -59,12 +59,12 @@
 
                 if (result(a, b) == "player win") {
                     playerScore += 1;
-                    console.log(`u win, player: ${playerScore}, computer: ${computerScore}`)
+                    console.log(`u win\nplayer: ${playerScore}, computer: ${computerScore}`)
                 } else if (result(a, b) == "player lost") {
                     computerScore += 1;
-                    console.log(`u lose, player: ${playerScore}, computer: ${computerScore}`)
+                    console.log(`u lose\nplayer: ${playerScore}, computer: ${computerScore}`)
                 } else if (result(a,b) == "draw") {
-                    console.log("draw")
+                    console.log(`draw\nplayer: ${playerScore}, computer: ${computerScore}`)
                 }
             }
             if (playerScore > computerScore) {
