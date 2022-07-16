@@ -54,17 +54,17 @@
             let computerScore = 0;
 
             while (playerScore != 5 && computerScore != 5) {
-                a = prompt("rock, paper, or scissor").toLowerCase();
-                b = computerTurn();
+                b = prompt("rock, paper, or scissor").toLowerCase();
+                a = computerTurn();
 
                 if (result(a, b) == "player win") {
                     playerScore += 1;
-                    console.log(`u win\nplayer: ${playerScore}, computer: ${computerScore}`)
+                    console.log(`u chose ${b}, the computer chose ${a}\n**************\nYOU WIN\nplayer: ${playerScore}, computer: ${computerScore}`)
                 } else if (result(a, b) == "player lost") {
                     computerScore += 1;
-                    console.log(`u lose\nplayer: ${playerScore}, computer: ${computerScore}`)
+                    console.log(`u chose ${b}, the computer chose ${a}\n**************\nCOMPUTER WIN\nplayer: ${playerScore}, computer: ${computerScore}`)
                 } else if (result(a, b) == "draw") {
-                    console.log(`draw\nplayer: ${playerScore}, computer: ${computerScore}`)
+                    console.log(`u chose ${b}, the computer chose ${a}\n**************\nDRAW\nplayer: ${playerScore}, computer: ${computerScore}`)
                 }
             }
 
