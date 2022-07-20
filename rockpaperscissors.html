@@ -9,7 +9,39 @@
 </head>
 
 <body>
+    <button class="btns" id="rock">ROCK</button>
+    <button class="btns" id="paper">PAPER</button>
+    <button class="btns" id="scissor">SCISSOR</button>
+    <div>
+        <p class="playerscore">Player Score: </p>
+        <p class="computerscore">Computer Score: </p>
+        <p class="result"></p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
     <script>
+        let playerScore = 0;
+        let computerScore = 0;
+
+
+        const pselect = document.querySelectorAll('.btns').forEach(
+            pselect => pselect.addEventListener("click", () => game(pselect.id))
+        )
+        const results = document.querySelector('.result')
+        const pscore = document.querySelector('.playerscore')
+        const cscore = document.querySelector('.computerscore')
+
+
+
         function computerTurn() {
             let computerChoice = Math.floor(Math.random() * 3);
             if (computerChoice == 0) {
@@ -49,35 +81,43 @@
         }
 
 
-        function game() {
-            let playerScore = 0;
-            let computerScore = 0;
+        function game(playerSelection) {
 
-            while (playerScore != 5 && computerScore != 5) {
-                b = prompt("rock, paper, or scissor").toLowerCase();
-                a = computerTurn();
+            b = playerSelection
+            a = computerTurn();
 
-                if (result(a, b) == "player win") {
-                    playerScore += 1;
-                    console.log(`u chose ${b}, the computer chose ${a}\n**************\nYOU WIN\nplayer: ${playerScore}, computer: ${computerScore}`)
-                } else if (result(a, b) == "player lost") {
-                    computerScore += 1;
-                    console.log(`u chose ${b}, the computer chose ${a}\n**************\nCOMPUTER WIN\nplayer: ${playerScore}, computer: ${computerScore}`)
-                } else if (result(a, b) == "draw") {
-                    console.log(`u chose ${b}, the computer chose ${a}\n**************\nDRAW\nplayer: ${playerScore}, computer: ${computerScore}`)
-                }
+            if (result(a, b) == "player win") {
+                playerScore += 1;
+                results.textContent = `u chose ${b}, the computer chose ${a}`
+                pscore.textContent = `Player Score: ${playerScore}`
+                cscore.textContent = `Computer Score: ${computerScore}`
+            } else if (result(a, b) == "player lost") {
+                computerScore += 1;
+                pscore.textContent = `Player Score: ${playerScore}`
+                cscore.textContent = `Computer Score: ${computerScore}`
+                results.textContent = `u chose ${b}, the computer chose ${a}`
+            } else if (result(a, b) == "draw") {
+                pscore.textContent = `Player Score: ${playerScore}`
+                cscore.textContent = `Computer Score: ${computerScore}`
+                results.textContent = `u chose ${b}, the computer chose ${a}`
             }
-
             if (playerScore == 5) {
-                return (`You win with the score of ${playerScore}`)
+                results.textContent = `YOU WON`
+                const pselect = document.querySelectorAll('.btns').forEach(
+                    pselect => pselect.disabled = true)
+
             } else if (computerScore == 5) {
-                return (`Computer win with the score of ${computerScore}`)
-            } else {
-                return ('draw')
+                results.textContent = `COMPUTER WON`
+                const pselect = document.querySelectorAll('.btns').forEach(
+                    pselect => pselect.disabled = true)
+            } else if (playerScore == 5 && computerScore == 5) {
+                results.textContent = 'DRAW';
+                const pselect = document.querySelectorAll('.btns').forEach(
+                    pselect => pselect.disabled = true)
             }
+
         }
 
-        console.log("**************\n" + game());
     </script>
 </body>
 
